@@ -1,0 +1,1 @@
+export const register = 'https://api.noroff.dev/api/v1/auction/auth/register'
