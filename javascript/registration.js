@@ -1,14 +1,18 @@
 import { register } from './urls.js'
 
 const signupForm = document.getElementById('signup-form')
-signupForm.addEventListener('signup-btn', async (event) => {
+signupForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     
 
 
-    const name = document.getElementById('email-input').value;
-    const email = document.getElementById('name-input').value;
-    const password = document.getElementById('password-input').value;
+    const nameInput = document.getElementById('name-input');
+    const emailInput = document.getElementById('email-input');
+    const passwordInput = document.getElementById('password-input');
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
     let isValid = true;
 
@@ -34,14 +38,18 @@ signupForm.addEventListener('signup-btn', async (event) => {
   }
 
   if (isValid) {
-    // Submit the form
+    signupForm.reset()
+    window.location.href = '/html/login.html'
+  } else {
+    console.log('Form is not valid')
   }
 
     const userRegistration = {
-        email,
         name,
+        email,
         password,
     };
+    console.log(userRegistration);
 
     try {
         const response = await fetch(`${register}`, {
