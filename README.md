@@ -48,7 +48,7 @@ For the profile page you can see a container which includes the username, bio an
 
 For the login page I created a simple form where users can input their email and password to login. User registration page is also linked to the "Sign up here" button, which takes them to the registration form. When user is logged in they get taken to the homepage wehre they will see an array of posts created by users and also the profile page.
 
-![image](/readme-assets/login.png)
+![image](/readme-assets/readme-login.png)
 
 ## Conclusion
 
