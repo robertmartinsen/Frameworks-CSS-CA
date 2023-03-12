@@ -28,7 +28,7 @@ Brief
 - Feed Page (/feed/index.html)
 - Profile page (/profile/index.html)"
 
-Duration for this CA: 17.01.2023 - 29.01.2023.
+Duration for this CA: 17.01.2023 - 29.01.2023
 
 ### Homepage
 
@@ -103,6 +103,8 @@ The following user stories are optional:
 - User can follow/unfollow a profile
 - User can react to a post content item
 
+Duration for this CA: 30.01.2023 - 12.03.2023
+
 
 # Login/register page
 
@@ -115,7 +117,7 @@ For the login page is the same proccess as the registration, but when the user h
 
 # Post content feed
 
-For the users to view the content feed I imported the API url needed to fetch the data in the main.js file. To fetch the posts, the JWT token was needed. I fetched the posts that contained all title, body and media as I thoguht it would match the theme of the webpage. To display the posts in the js file I created a div to hold the posts and also had used "innerHTML". 
+For the users to view the content feed I imported the API url needed to fetch the data in the main.js file. To fetch the posts, the JWT token was needed. I fetched the posts and used "forEach" to have the posts in their individual post cards. The posts fetched contained all title, body and media as I thoguht it would match the theme of the webpage. To display the posts in the js file I created a div to hold the posts and also had used "innerHTML". 
 
 I wouldve wished to use "getElementByID" to get the divs in the html file instead of having html in the js file. I had plans to change this, but there were 2 days left for the CA and the servers went down during the weekend, so I didnt dare to make any changes if incase it would not function.
 
@@ -123,6 +125,65 @@ I wouldve wished to use "getElementByID" to get the divs in the html file instea
 
 # filter/search 
 
+The filtering I didnt quite understad, so I used the filter url provided in the API documentation. I included it in the GET request to fetch the posts and used template literals, which allows variables to be turned in to a string. The displayPosts(tag = '') function takes an optional tag parameter, and calls getPosts(tag) to fetch the posts based on the specified tag. When the user inputs the tag in the search form it will filter the displayed posts and show posts that have a title or a body that includes the search input text.
+
+# Create a post content item
+
+For a user to create a post I used the event listener function on the form. A post request will be sent when the user has input a title, body and media. When user has submitted thei data and everything checks out, the page will be reloaded and their post will be displayed.
+
+# User can view a post content by ID
+
+For a user to view a post by ID, a user can click on the title of the post on the homepage which directs them to an html where it shows the post card only. I made a GET request using the fetch method, with a URL that includes the specific ID. The second code snippet creates a postId variable by extracting the value of a query parameter ID from the URL of the current page. This was done using the "URLSearchParams" constructor and the "get()" method to extract the value of the id parameter. 
+
+![image] (/readme-assets/readme-posts.png)
+
+# User can update a post content item
+
+For a user to update their post, they can click on the edit button on the post ID page reveals a form just like in the homepage. Method used was a PUT request for this function. When user has entered in a new title, body and media and clicked submit the page will reload, new data will be sent to the API and a new post card will be displayed. If the user is not authorized to change the post a pop up message will appear. I would've wished the edit button was not displayed to the user who are not authorized to edit the post ID. 
+
+# User can delte a post content item
+
+For a user to delete a post content ID I created a delete button, so the user can delete the post. Method used was a DELETE request for this function. When user deletes a post, they will be redirected to the homepage. If the user is not authorized to delete the post a pop up message will appear.
+
+## Conclusion
+
+For this CA I didnt focus too much on the HTML aspects and focused solely on Javascript. I wished I could've utilized ES6 modules in a more effective way and created more folders to hold functions. I spent half of this deadline trying to learn how to use synchronous functions to pass data from the html to the API server, which I think I managed quite well in the end for this CA. Having html in the js file was something I was going to remove, but had a bit of a time scramble and also having the edit and delete button hidden for unauthorized users. The additional features I didn't have time to do either.
+
+This was a project I did alone. 
+
+## Getting Started
+
+### Installing
+
+This is where you list how to get the project started. It typically just includes telling a person to clone the repo and then to install the dependencies e.g.
+
+1. Clone the repo:
+
+```bash
+gh repo clone robertmartinsen/Social-media-platform-CA
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
+
+### Running
+
+Here is where you detail how to run the app. It typically involves the commands you'd need to run to start the project e.g.
+
+To run the app, run the following commands:
+
+```bash
+npm run start
+```
+
+## Contact
+
+[My email] (robertmartinsen2000@gmail.com)
+[My Discord] (robmartinsen#6005)
+[My Instagram page](www.instagram.com/robertmartinsen_)
 
 
 
