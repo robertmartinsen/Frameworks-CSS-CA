@@ -104,5 +104,25 @@ The following user stories are optional:
 - User can react to a post content item
 
 
+# Login/register page
+
+First I made a javascript file (data.js) for the urls and the API POST requests for user registration and login
+
+For a user to register a user I added event listener for users to input their details on the form and send their data to the API. I also added validations like users with @noroff.no or @stud.noroff.no email, and password length is minimum 8 characters. I also added "trim()" to the values so any white spaces the user inputs will be removed. When user has successfully registered their user they get redirected back to the login page.
+
+For the login page is the same proccess as the registration, but when the user has entered in the right data (respons status = 200) they get redirected to the homepage. And a JWT token gets generated and set to the local storage.
+
+
+# Post content feed
+
+For the users to view the content feed I imported the API url needed to fetch the data in the main.js file. To fetch the posts, the JWT token was needed. I fetched the posts that contained all title, body and media as I thoguht it would match the theme of the webpage. To display the posts in the js file I created a div to hold the posts and also had used "innerHTML". I wouldve wished to use "getElementByID" to get the divs in the html file instead of having html in the js file. I had plans to change this, but there were 2 days left for the CA and the servers went down during the weekend, so I didnt dare to make any changes if incase it would not function.
+
+![image](/readme-assets/readme-posts.png)
+
+# filter/search 
+
+
+
+
 
 
