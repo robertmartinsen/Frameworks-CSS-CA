@@ -115,7 +115,9 @@ For the login page is the same proccess as the registration, but when the user h
 
 # Post content feed
 
-For the users to view the content feed I imported the API url needed to fetch the data in the main.js file. To fetch the posts, the JWT token was needed. I fetched the posts that contained all title, body and media as I thoguht it would match the theme of the webpage. To display the posts in the js file I created a div to hold the posts and also had used "innerHTML". I wouldve wished to use "getElementByID" to get the divs in the html file instead of having html in the js file. I had plans to change this, but there were 2 days left for the CA and the servers went down during the weekend, so I didnt dare to make any changes if incase it would not function.
+For the users to view the content feed I imported the API url needed to fetch the data in the main.js file. To fetch the posts, the JWT token was needed. I fetched the posts that contained all title, body and media as I thoguht it would match the theme of the webpage. To display the posts in the js file I created a div to hold the posts and also had used "innerHTML". 
+
+I wouldve wished to use "getElementByID" to get the divs in the html file instead of having html in the js file. I had plans to change this, but there were 2 days left for the CA and the servers went down during the weekend, so I didnt dare to make any changes if incase it would not function.
 
 ![image](/readme-assets/readme-posts.png)
 
