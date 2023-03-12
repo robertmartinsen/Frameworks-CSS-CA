@@ -1,6 +1,14 @@
-import { posts } from "./urls.js";
 
-const accessToken = localStorage.getItem('accessToken')
+import { posts } from "./data.js";
+
+const accessToken = localStorage.getItem('accessToken');
+
+
+/**
+ * Fetches posts from the API with an optional tag filter.
+ * @param {string} tag  - user enters a tag to filter the posts in the search form.
+ * @returns {Promise} - an array of posts.
+ */
 
 async function getPosts(tag = '') {
     const response = await fetch (`${posts}?_tag=${tag}`, {
@@ -13,9 +21,17 @@ async function getPosts(tag = '') {
     return data
 }
 
+/**
+ * Displays posts in the html with an optional tag filter.
+ * @param {string} tag - filters the postfeed when user has entered a tag in the search form.
+ * ```js
+ * displayPosts();
+ * ```
+ */
+
 async function displayPosts(tag = '') {
     const posts = await getPosts(tag);
-    const postsContainer = document.getElementById('post-container')
+    const postsContainer = document.getElementById('post-container');
     postsContainer.innerHTML = '';
     
     posts.forEach((post) => {
@@ -41,7 +57,7 @@ async function displayPosts(tag = '') {
                         <div class="post-card_title-section overflow-hidden">
                             <div class="d-flex justify-content-between">
                             <h4 class="post-card_title">
-                                <a href="#" class="text-decoration-none text-dark">${post.title}</a>
+                                <a href="authpost.html?id=${post.id}" class="text-decoration-none text-dark">${post.title}</a>
                             </h4>
                             <a href="#" class="post-card_author fs-5 text-dark">@user</a>
                             </div>
@@ -73,16 +89,21 @@ postButton.addEventListener('click', async (event) => {
     const body = document.getElementById('body').value
     const media = document.getElementById('media').value
 
-    const response = await fetch(posts, {
-        method: 'POST',
-        headers: {
+    try {
+        const response = await fetch(posts, {
+          method: 'POST',
+          headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify({ title, body, media})
-        })
+        });
         const data = await response.json();
-        return data
-    })
+        window.location.href = 'authindex.html';
+      } catch (error) {
+        console.error(error);
+      }
+});
+      
 
-displayPosts()
+displayPosts();

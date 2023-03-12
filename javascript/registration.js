@@ -1,4 +1,6 @@
-import { register } from './urls.js'
+//registration.js
+
+import { register } from './data.js'
 
 const signupForm = document.getElementById('signup-form')
 signupForm.addEventListener('submit', async (event) => {
@@ -36,32 +38,13 @@ signupForm.addEventListener('submit', async (event) => {
     document.getElementById('password-error').textContent = 'Password must be at least 8 characters long';
     isValid = false;
   }
-
-  if (isValid) {
-    signupForm.reset()
-    window.location.href = '/html/login.html'
-  } else {
-    console.log('Form is not valid')
+  
+  try {
+    await register({ name, email, password });
+    signupForm.reset();
+    window.location.href = '/html/login.html';
+  } catch (error) {
+    console.error(error);
   }
 
-    const userRegistration = {
-        name,
-        email,
-        password,
-    };
-    console.log(userRegistration);
-
-    try {
-        const response = await fetch(`${register}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userRegistration)
-        });
-        const data = await response.json();
-        console.log(data)
-    } catch (error) {
-        console.log(error)
-    }
 });

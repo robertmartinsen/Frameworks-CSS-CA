@@ -1,4 +1,5 @@
-import { login } from "./urls.js";
+
+import { login } from "./data.js";
 
 const loginForm = document.getElementById('login-form')
 loginForm.addEventListener('submit', async (event) => {
@@ -26,25 +27,15 @@ loginForm.addEventListener('submit', async (event) => {
     loginForm.reset()
 
     try {
-            const response = await fetch(`${login}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            })
-
-            if (response.status === 200) {
-                const { accessToken } = await response.json()
-                localStorage.setItem('accessToken', accessToken);
-                window.location.href = '/authhtml/authindex.html'
-            } else {
-                const data = await response.json()
-                console.log(data)
-            }
-        } catch(error) {
-            console.log(error)
+        const accessToken = await login({ email, password });
+        if (accessToken) {
+            localStorage.setItem('accessToken', accessToken);
+            window.location.href = '/authhtml/authindex.html';
         }
+    } catch (error) {
+        console.log(error);
+    }
+        
     } else {
         console.log('Form is not valid')
     }
