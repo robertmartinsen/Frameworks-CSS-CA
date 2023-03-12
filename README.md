@@ -119,7 +119,7 @@ For the users to view the content feed I imported the API url needed to fetch th
 
 I wouldve wished to use "getElementByID" to get the divs in the html file instead of having html in the js file. I had plans to change this, but there were 2 days left for the CA and the servers went down during the weekend, so I didnt dare to make any changes if incase it would not function.
 
-![image](/readme-assets/readme-posts.png)
+![image](/readme-assets/readme-postid.png)
 
 # filter/search 
 
